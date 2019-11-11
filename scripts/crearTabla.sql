@@ -1,13 +1,13 @@
 drop database if exists test;
-CREATE DATABASE IF NOT EXISTS test;
+CREATE DATABASE  test;
 use test;
 
 CREATE TABLE estudiantes (
-	id INT AUTO_INCREMENT,
-	nombre varchar(100) NOT NULL,
-	comidaPreferida varchar(100) NULL,
-	fechaNacimiento DATE NOT NULL,
-	CONSTRAINT estudiantes_PK PRIMARY KEY (id)
+    id INT AUTO_INCREMENT,
+    nombre varchar(100) NOT NULL,
+    comidaPreferida varchar(100) NULL,
+    fechaNacimiento DATE NOT NULL,
+    CONSTRAINT estudiantes_PK PRIMARY KEY (id)
 );
 
 INSERT INTO test.estudiantes VALUES
