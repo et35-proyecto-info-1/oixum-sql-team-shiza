@@ -1,27 +1,24 @@
-<style>
-h1{
-  color:green;
-}
-</style>
-<h1>Oixum SQL</h1>
 
-<form method="post" action="/">
-  <textarea name="query" rows="4" cols="30"></textarea><br />
-  <input type="submit" />
-</form>
 
-{{#if error}}
-<h3>Error</h3>
-<code>{{ error }}</code>
-{{/if}}
+h1 Oixum SQL
 
-{{#if resultados}}
-<h3>Resultados</h3>
-<code>{{ resultados }}</code>
+form method="post" action="/"
+  textarea name="query" rows="4" cols="30"
+  input type="submit"
 
-<h3>Columnas</h3>
-<code>{{ columnas }}</code>
+#if error
+h3 Error
 
-{{/if}}
+code error
 
-<input type="image" img src="../public/owo.png" alt="asd">
+
+#if resultados
+table
+  thead
+      #each columnas
+        th this.name
+
+  tbody
+    tr
+      #each resultados
+          td this.name

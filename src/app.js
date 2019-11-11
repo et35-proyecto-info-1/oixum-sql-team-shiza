@@ -8,8 +8,7 @@ var path = require('path');
 
 app.use(express.urlencoded({ extended: false }));
 app.set('../views', path.join(__dirname, 'views'));
-app.engine('handlebars', exphbs());
-app.set('view engine', 'handlebars');
+app.set('view engine', 'pug');
 
 
 app.get('/', function(req, res) {
@@ -22,8 +21,8 @@ app.post('/', function(req, res) {
   const query = req.body.query;
   connection.query(query, function (error, results, fields) {
     res.render('home', {
-      resultados: JSON.stringify(results),
-      columnas: JSON.stringify(fields),
+      resultados:results,
+      columnas:fields,
       error: error
     });
   });

@@ -1,0 +1,28 @@
+html
+  head
+    meta charset="utf-8"
+      title
+        "Oixum SQL"
+  body
+  h1 Oixum SQL
+
+  form method="post" action="/"
+    textarea name="query" rows="4" cols="30"
+    input type="submit"
+
+  #if error
+  h3 Error
+
+  code error
+
+
+  #if resultados
+  table
+    thead
+        #each columnas
+          th this.name
+
+    tbody
+      tr
+        #each resultados
+            td this.name
