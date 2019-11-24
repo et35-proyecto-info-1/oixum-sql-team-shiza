@@ -1,28 +1,27 @@
 html
-  head
-    meta charset="utf-8"
-      title
-        "Oixum SQL"
-  body
-  h1 Oixum SQL
+    head
 
-  form method="post" action="/"
-    textarea name="query" rows="4" cols="30"
-    input type="submit"
+    body
+      h1 Oixum SQL
 
-  #if error
-  h3 Error
+      form(method="post" action="/")
+        textarea(name="query" rows="4" cols="30")
+        input(type="submit")
 
-  code error
+      if error
+        h3 Error
+
+          code error
 
 
-  #if resultados
-  table
-    thead
-        #each columnas
-          th this.name
+      if resultados
+        table
+          thead
+            each columnas in columnas.lenght
+              th= this.name
 
-    tbody
-      tr
-        #each resultados
-            td this.name
+          tbody
+            tr
+              each columnas in columnas
+                each resultados in resultados
+                  td= this.name

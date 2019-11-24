@@ -2,17 +2,17 @@
 
 var express = require('express');
 var connection = require('./connection');
-var exphbs  = require('express-handlebars');
 var app = express();
 var path = require('path');
+var pug = require('pug');
 
 app.use(express.urlencoded({ extended: false }));
 app.set('../views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('view engine','pug');
 
 
 app.get('/', function(req, res) {
-  res.render('home');
+  res.render('index');
 });
 
 
@@ -20,10 +20,10 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
   const query = req.body.query;
   connection.query(query, function (error, results, fields) {
-    res.render('home', {
+    res.render('index', {
       resultados:results,
       columnas:fields,
-      error: error
+      error:error
     });
   });
 });
