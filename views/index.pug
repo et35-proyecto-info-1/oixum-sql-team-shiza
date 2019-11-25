@@ -1,31 +1,30 @@
 html
     head
       style
-       include css/styles.css
+        include css/styles.css
 
     body
      h2 Oixum weeb
-     div(class="amarante")  
+     div(class="amarante")
       h1(class="h1")
-      
+
       form(method="post" action="/")
         textarea(name="query" rows="4" cols="30")
         input(type="submit")
 
-      if error
+      if (error)
         h3 Error
 
           code error
 
 
-      if resultados
-        table
+      if (results)
+        table(class='table')
           thead
-            each columnas in columnas.lenght
-              th= this.name
-
+            each col in fields
+              th= col.name
           tbody
-            tr
-              each columnas in columnas
-                each resultados in resultados
-                  td= this.name
+            each row in results
+             tr
+              each col in fields
+               td= row[col.name]

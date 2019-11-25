@@ -1,17 +1,29 @@
 drop database if exists test;
-CREATE DATABASE  test;
+create database test;
 use test;
 
-CREATE TABLE estudiantes (
-    id INT AUTO_INCREMENT,
-    nombre varchar(100) NOT NULL,
-    comidaPreferida varchar(100) NULL,
-    fechaNacimiento DATE NOT NULL,
-    CONSTRAINT estudiantes_PK PRIMARY KEY (id)
+create table if not exists test.estudiantes (
+id INT NOT NULL auto_increment,
+nombre varchar(100) NOT NULL,
+comidaPreferida varchar(100) NULL,
+fechaNacimiento DATE NOT NULL,
+CONSTRAINT estudiantes_PK PRIMARY KEY(ID)
 );
+INSERT INTO test.estudiantes values
+("1", "Oliver Queen", "Pollo al horno", "2004-05-08"),
+("", "Barry Allen", "Big Belly Burguer", "2002-07-15"),
+("","Felicity Smoke", "Medialunas", "1998-01-25"),
+("", "John Diggle", "Estofado", "2003-04-30");
 
-INSERT INTO test.estudiantes VALUES
-  ("1",'Federico Aloi', 'Panqueques de arroz', '1991-10-30'),
-  ("",'Andrea Sierra Bueno', 'Puré de papas con huevo revuelto', '1985-08-30'),
-  ("",'Fernando Cazas', 'Hamburguesas de lentejas', '1963-02-12'),
-  ("",'Marta Lucero', 'Conejo a la cacerola', '1938-01-24');
+create table test.cursos(
+idcurso int auto_increment,
+id  INT ,
+año varchar(100) NOT NULL,
+division varchar(100) NOT NULL,
+CONSTRAINT cursos_PK PRIMARY KEY (idcurso),
+CONSTRAINT cursos_FK FOREIGN KEY (id) references estudiantes (id)
+);
+INSERT INTO test.cursos values
+("1","1","1","1"),
+("","2","1","2"),
+("","3","2","1");
